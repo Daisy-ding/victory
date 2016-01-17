@@ -34,7 +34,7 @@ public class TestUserDaoImpl {
         System.out.println(jedisTemplate.opsForList().range("ll", 0, -1));
 
         ValueOperations<String, User> valueOper = jedisTemplate.opsForValue();
-        User user = new User("dingqi", "123");
+        User user = new User("2","dingqi", "123");
         valueOper.set("user:1", user);
         System.out.println(valueOper.get("user:1").getName());
 
@@ -42,7 +42,7 @@ public class TestUserDaoImpl {
     @Test
     public void testAddUser(){
 
-        userDao.addUser("testName", "testPwd");
+        userDao.addUser("3","testName", "testPwd");
     }
 
     @Test
@@ -50,11 +50,11 @@ public class TestUserDaoImpl {
         userDao.useCallback();
     }
 
-    @Test
-    public void testAddTx(){
-        User user = new User("dingqi","0000");
-        userDao.addUserTransactional("user",user);
+//    @Test
+//    public void testAddTx(){
+//        User user = new User("dingqi","0000");
+//        userDao.addUserTransactional("user",user);
 
-    }
+//    }
 }
 

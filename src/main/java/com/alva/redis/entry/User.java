@@ -8,13 +8,15 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
+    private String id;
     private String name;
     private String pwd;
     public User(){
 
     }
 
-    public User(String name,String pwd){
+    public User(String id,String name,String pwd){
+        this.id =  id;
         this.name = name;
         this.pwd = pwd;
     }

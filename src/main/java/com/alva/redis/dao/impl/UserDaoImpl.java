@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by alva on 16/1/5.
  */
-@Repository("userDao")
+//@Repository("userDao")
 public class UserDaoImpl implements  UserDao {
 
     @Autowired
@@ -30,9 +30,9 @@ public class UserDaoImpl implements  UserDao {
     @Resource(name = "jedisTemplate")
     public ListOperations<String, String> listOps;
 
-    public void addUser(String userName, String userPwd) {
+    public void addUser(String id,String userName, String userPwd) {
 
-        User user = new User(userName,userPwd);
+        User user = new User(id,userName,userPwd);
         listOps.leftPush(userName, JSONObject.toJSONString(user));
         List<String> ll= listOps.range(userName,0,-1);
         System.out.println("ll.size : "+ll.size());
@@ -61,7 +61,7 @@ public class UserDaoImpl implements  UserDao {
     }
 
     @Override
-    public void addUserTransactional(final String myKey, final User myUser) {
+    public void addUserTransactional(String id,final String myKey, final User myUser) {
 
         SessionCallback<User> sessionCallback = new SessionCallback<User>() {
             @Override
