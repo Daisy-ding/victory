@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class UserDaoImpl implements  UserDao {
 
     @Autowired
-    protected RedisTemplate<String, String> jedisTemplate;
+    protected RedisTemplate<String, Object> jedisTemplate;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
